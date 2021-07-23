@@ -31,6 +31,10 @@ namespace PORTAL_DE_TI
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.Configure<IISOptions>(o =>
+            {
+                o.ForwardClientCertificate = false;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
