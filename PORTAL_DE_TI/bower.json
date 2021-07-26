@@ -1,0 +1,21 @@
+{
+  "name": "portal",
+  "homepage": "https://github.com/JRV-Tecnologia/PORTAL_DE_TI",
+  "authors": [
+    "nkllsrvs <nikollas07@gmail.com>"
+  ],
+  "description": "",
+  "main": "PORTAL_DE_TI.sln",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4.0"
+  }
+}
