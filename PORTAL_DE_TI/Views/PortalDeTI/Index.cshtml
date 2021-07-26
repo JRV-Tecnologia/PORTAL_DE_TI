@@ -5,13 +5,46 @@
 @{
     Layout = "_LayoutPortalDeTI";
 }
+@section Styles {
+    <link href="~/Content/PortalDeTi/main.css" rel="stylesheet" />
+}
 
-
-
-<div>
-    <div class="navbar navbar-default navbar-fixed-top" role="banner">
-        <img src="https://static.vecteezy.com/system/resources/thumbnails/002/558/921/small/abstract-rainbow-header-modern-spectrum-banner-simple-illustration-vector.jpg" class="img-responsive" alt="Portal de TI">
+<div class="col-md-10">
+    <!-- column 2 -->
+    <div class="row">
+        <div class="col-md-2 col-md-offset-10">
+            <input type="text" class="form-control" placeholder="Pesquisar" />
+        </div>
     </div>
-</div>
+    <hr>
+    <div class="row" style="height: 200px">
+        <!-- center left-->
+        <div class="col-md-8" style="background-color:red; height:100%;">
 
+            Bloco 01
+        </div><!--/col-->
+        <div class="col-md-4" style="background-color:green; height:100%;">
 
+            Bloco 02
+        </div><!--/col-->
+        <!--center-right-->
+
+    </div><!--/row-->
+    <div class="row" style="height: 300px">
+        <!-- center left-->
+        <div class="col-md-8" style="background-color:blue; height:100%;">
+
+            Bloco 03
+        </div><!--/col-->
+        <div class="col-md-4" style="background-color:yellow; height:100%;">
+
+            Bloco 04
+        </div><!--/col-->
+        <!--center-right-->
+
+    </div><!--/row-->
+</div><!--/col-span-9-->
+
+@section Scripts {
+    <script src="~/Content/PortalDeTi/main.js"></script>
+}

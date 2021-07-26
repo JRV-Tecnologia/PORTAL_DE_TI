@@ -5,15 +5,69 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] PORTAL DE TI</title>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
 </head>
 <body>
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    <!-- Topo do Site -->
+    <div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+        <div class="bootstrap snippets bootdey">
+            <div class="navbar-header">
+                
+            </div>
+            <div class="row col-md-12">
+                
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+                        <li class="dropdown">
+
+                            <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                                <i class="glyphicon glyphicon-user"></i> 
+                            </a>
+                            <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                               
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li><a href="#">Admin</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+        </div><!-- /container -->
+    </div>
+    <!-- Topo do Site -->
+
+    <div class="container-fluid">
+        <!-- Main -->
+        <div class="bootstrap snippets bootdey">
+
+            <!-- upper section -->
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- left -->                    
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-link"></i> Links</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-list-alt"></i> Reports</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-book"></i> Books</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-briefcase"></i> Tools</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-time"></i> Real-time</a></li>
+                        <li><a href="#"><i class="glyphicon glyphicon-plus"></i> Advanced..</a></li>
+                    </ul>
+                </div><!-- /span-3 -->
+                @RenderBody()
+            </div><!--/row-->
+            <!-- /upper section -->
+        </div><!--/container-->
+        <!-- /Main -->
+
+    </div> 
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
