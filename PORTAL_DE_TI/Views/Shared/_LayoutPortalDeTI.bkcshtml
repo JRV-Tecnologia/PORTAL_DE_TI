@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] PORTAL DE TI</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    <!-- Topo do Site -->
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand" href="#">Fixed navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </header>
+    
+    @*<div id="top-nav" class="navbar navbar-inverse navbar-static-top">
+            <div class="bootstrap snippets bootdey">
+                <div class="navbar-header">
+
+                </div>
+                <div class="row col-md-12">
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li class="dropdown">
+
+                                <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+                                    <i class="glyphicon glyphicon-user"></i>
+                                </a>
+                                <ul id="g-account-menu" class="dropdown-menu" role="menu">
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+
+                            <li><a href="#">Admin</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div><!-- /container -->
+        </div>*@
+    <!-- Topo do Site -->
+
+    <div class="container-fluid">
+        <!-- Main -->
+        <div class="bootstrap snippets bootdey">
+
+            <!-- upper section -->
+            <div class="row">
+                <div class="col-md-2">
+                    <!-- left -->
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">News</a></li>
+                        <li><a href="#">Processos</a></li>
+                        <li><a href="#">Capacitação</a></li>
+                        <li><a href="#">Artefatos</a></li>
+                        <li><a href="#">Dashboards</a></li>
+                        <li><a href="#">TI + Simples</a></li>
+                    </ul>
+                </div><!-- /span-3 -->
+                @RenderBody()
+            </div><!--/row-->
+            <!-- /upper section -->
+        </div><!--/container-->
+        <!-- /Main -->
+
+    </div>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
