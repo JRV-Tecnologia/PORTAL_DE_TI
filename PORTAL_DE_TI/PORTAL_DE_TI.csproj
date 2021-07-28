@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -7,11 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\Shared\_LayoutPortalDeTI.bkcshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\Shared\_LayoutPortalDeTI.bkcshtml" />
+    <None Include="wwwroot\Content\PortalDeTi\imgs\top-background.png" />
+    <None Include="wwwroot\Content\PortalDeTi\main.css" />
+    <None Include="wwwroot\Content\PortalDeTi\main.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,6 +17,11 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
   </ItemGroup>
 
 </Project>
