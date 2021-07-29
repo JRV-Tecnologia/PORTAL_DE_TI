@@ -6,20 +6,24 @@ using System.Threading.Tasks;
 
 namespace PORTAL_DE_TI.Models
 {
-    [Table("TB_NEWS")]
-    public class NewsDB
+    [Table("TB_BANNER")]
+    public class BannerDB
     {
         [Column("ID")]
         public Int32 Id { get; set; }
-        [Column("NOME")]
-        public String Nome { get; set; }
-        [Column("RESENHA")]
-        public String Resenha { get; set; }
+        [Column("BANNER")]
+        public String Banner { get; set; }
+        [Column("TOOLTIP")]
+        public String Tooltip { get; set; }
         [Column("CAMINHO_IMG")]
         public String CaminhoImg { get; set; }
-        [Column("TEXTO")]
-        public String Texto { get; set; }
+        [Column("BANNER_DET")]
+        public String BannerDet { get; set; }
         [Column("DATA_CADASTRO")]
         public DateTime DataCadastro { get; set; }
+        [Column("LINK")]
+        public String Link { get; set; }
+
     }
 }
+

@@ -23,7 +23,10 @@ namespace PORTAL_DE_TI.Models
         { }
 
         public DbSet<NewsDB> NewsDBs { get; set; }
-
+        public DbSet<MenuDB> MenuDBs { get; set; }
+        public DbSet<BannerDB> BannerDBs { get; set; }
+        public DbSet<Banner4DB> Banner4DBs { get; set; }
+        public DbSet<ProcessosDB> ProcessoDBs { get; set; }
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
