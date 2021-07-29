@@ -47,9 +47,7 @@
 
     <!-- Custom styles for this template -->
 
-
-
-    <link href="~/Content/PortalDeTi/main.css" />
+    <link href="~/Content/PortalDeTi/main.css" rel="stylesheet" />
     <link href="~/css/dashboard.css" rel="stylesheet" />
     @RenderSection("Styles", required: false)
 </head>
@@ -78,10 +76,19 @@
 
     @* Corpo *@
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
-        @RenderBody()
+        <div class="col-md-12">
+            <!-- column 2 -->
+            <div class="row">
+                <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
+                    <input type="text" class="form-control" placeholder="Pesquisar" />
+                </div>
+            </div>
+            <hr>
+            @RenderBody()
+        </div>
     </main>
 
-    
+
 
 
 
@@ -92,9 +99,22 @@
                     @foreach (MenuDB menu in listMenu.Where(w => w.IdPai == null))
                     {
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link" href="@menu.Link">
                                 @menu.Nome <span class="sr-only">(current)</span>
                             </a>
+                            @if (listMenu.Any(a => a.IdPai == menu.Id))
+                            {
+                                <ul class="nav flex-column">
+                                    @foreach (MenuDB menuFilho01 in listMenu.Where(w => w.IdPai == menu.Id))
+                                    {
+                                        <li class="nav-item">
+                                            <a class="nav-link col-md-off-1" href="#">
+                                                @menuFilho01.Nome<span class="sr-only">(current)</span>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
                         </li>
                     }
                 </ul>
