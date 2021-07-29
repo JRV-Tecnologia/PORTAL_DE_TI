@@ -1,50 +1,150 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 *@
 @{
     Layout = "_LayoutPortalDeTI";
+
+    List<NewsDB> news = (List<NewsDB>)ViewBag.News;
+    List<ProcessosDB> processos = (List<ProcessosDB>)ViewBag.Processos;
+    List<BannerDB> banner = (List<BannerDB>)ViewBag.Banner;
+    List<Banner4DB> banner4 = (List<Banner4DB>)ViewBag.Banner4;
 }
 @section Styles {
     <link href="~/Content/PortalDeTi/main.css" rel="stylesheet" />
 }
 
-<div class="col-md-10">
+<div class="col-md-12">
     <!-- column 2 -->
     <div class="row">
-        <div class="col-md-2 col-md-offset-10">
+        <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
             <input type="text" class="form-control" placeholder="Pesquisar" />
         </div>
     </div>
     <hr>
-    <div class="row" style="height: 200px">
-        <!-- center left-->
-        <div class="col-md-8" style="background-color:red; height:100%;">
+    @* Primeira ROW *@
+    <div class="row col-12">
+        @* Carousel *@
+        <div class="col-md-7">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    @foreach (BannerDB slide in banner)
+                    {
+                        <li data-target="#carouselExampleCaptions" data-slide-to="@slide.Id" class="@(slide.Id == banner.FirstOrDefault().Id ? "active" : "")"></li>
+                    }
+                </ol>
+                <div class="carousel-inner">
+                    @foreach (BannerDB banners in banner)
+                    {
+                        <div class="carousel-item @(banners.Id == banner.FirstOrDefault().Id ? "active" : "" )" >
+                            <img id="banner-@banners.Id" src="@banners.CaminhoImg" class="d-block" style="width:100%" alt="...">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>@banners.Banner</h5>
+                                <p>@banners.BannerDet</p>
+                            </div>
+                        </div>
+                        }
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
 
-            Bloco 01
-        </div><!--/col-->
-        <div class="col-md-4" style="background-color:green; height:100%;">
+            </div>
+            @* Grid *@
+            <div class="col-md-5">
+                <div class="cards">
+                    <div class="row " style="height:50%">
+                        <div class="col-sm-6 no-padding cards-item-left cards-item-top">
+                            <a href="#"><img src=@banner4.ToArray()[0].CaminhoImg style="height:93%; "></a>
+                        </div>
+                        <div class="col-sm-6 no-padding cards-item-right cards-item-top">
+                            <a href="#"><img src=@banner4.ToArray()[1].CaminhoImg style="height:93%; "></a>
+                        </div>
+                    </div>
+                    <div class="row " style="height:50%">
+                        <div class="col-sm-6 no-padding cards-item-left cards-item-bottom">
+                            <a href="#"><img src=@banner4.ToArray()[2].CaminhoImg style="height:97%"></a>
+                        </div>
+                        <div class="col-sm-6 no-padding cards-item-right cards-item-bottom">
+                            <a href="#"><img src=@banner4.ToArray()[3].CaminhoImg style="height:97%"></a>
+                        </div>
+                    </div>
+                </div>
+                <!--center-right-->
+            </div><!--/row-->
+            <br />
+        </div>
 
-            Bloco 02
-        </div><!--/col-->
-        <!--center-right-->
 
-    </div><!--/row-->
-    <div class="row" style="height: 300px">
-        <!-- center left-->
-        <div class="col-md-8" style="background-color:blue; height:100%;">
+        @* Segunda ROW *@
+        <div class="row col-12" style="padding-top:15px">
+            <!-- center left-->
 
-            Bloco 03
-        </div><!--/col-->
-        <div class="col-md-4" style="background-color:yellow; height:100%;">
+            <div class="col-md-7" style="margin-top: 10px; height: 100%;">
+                <ul class="list-group">
+                    <li class="list-group-item active" aria-current="true">News and Memos</li>
 
-            Bloco 04
-        </div><!--/col-->
-        <!--center-right-->
+                    @foreach (NewsDB item in news)
+                    {
+                        <li class="list-group-item ">
+                            <div class="row g-0">
+                                <div class="col-md-2 no-padding">
+                                    <img src="@item.CaminhoImg" class="img-fluid rounded-start" alt="..." style="width:100%">
+                                </div>
+                                <div class="col-md-9">
+                                    <h5 class="card-title">
+                                        @item.Nome
+                                    </h5>
+                                    <p class="card-text">
+                                        @item.Resenha
+                                    </p>
+                                    <p class="card-text">
+                                        @DateTime.Now.ToString("dd/MM/yyyy")
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    }
 
-    </div><!--/row-->
-</div><!--/col-span-9-->
+                </ul>
+            </div><!--/col-->
 
-@section Scripts {
-    <script src="~/Content/PortalDeTi/main.js"></script>
-}
+            <div class="col-md-5" style="margin-top: 10px; height:100%; padding:0 0 0 0">
+                <ul class="list-group">
+                    <li class="list-group-item active" aria-current="true">Processos</li>
+                    @foreach (ProcessosDB item in processos)
+                    {
+                        <li class="list-group-item ">
+                            <div class="row g-0">
+                                <div class="col-md-9">
+                                    <h5 class="card-title">
+                                        @item.Processo
+                                    </h5>
+                                    <p class="card-text">
+                                        @item.Tooltip
+                                    </p>
+                                    <p class="card-text">
+                                        @DateTime.Now.ToString("dd/MM/yyyy")
+                                    </p>
+                                </div>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div><!--/col-->
+            <!--center-right-->
+
+        </div><!--/row-->
+
+</div>
+    @section Scripts {
+        <script src="~/Content/PortalDeTi/main.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    }

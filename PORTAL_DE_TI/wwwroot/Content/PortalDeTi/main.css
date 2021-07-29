@@ -1,1 +1,48 @@
-﻿
+﻿#authentication {
+    background-image: url('/Content/PortalDeTi/imgs/top-background.png');
+    background-repeat: repeat-y;
+    background-size: 100%;
+   
+}
+.cards {
+
+    padding: -15px;
+}
+
+.cards img {
+    width: 100%;
+}
+
+.no-padding {
+    padding:0;
+}
+
+.cards-item-left {
+    padding-right: 7.5px;
+}
+
+.cards-item-right {
+    padding-left: 7.5px;
+}
+
+/*.cards-item-top {
+    padding-bottom: 7.5px;
+}*/
+
+.cards-item-bottom {
+    padding-top: 7.5px;
+}
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+    /* border-block-color: black; */
+    border-bottom: 2px solid dimgray;
+}
+
+.list-group-item.active {
+    z-index: 2;
+    color: #fff;
+    background-color: #4472c4;
+    border-color: #4472c4;
+}
