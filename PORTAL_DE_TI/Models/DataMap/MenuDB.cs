@@ -21,5 +21,7 @@ namespace PORTAL_DE_TI.Models
         public String Link { get; set; }
         [Column("ORDEM")]
         public Int32 Ordem { get; set; }
+        [Column("ICON")]
+        public String Icon { get; set; }
     }
 }

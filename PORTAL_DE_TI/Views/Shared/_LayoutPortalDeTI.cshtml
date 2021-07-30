@@ -699,10 +699,24 @@
 
             <!-- LOGO -->
             <a href="/" class="logo text-center logo-light">
-                <span class="logo-lg" style="height:45px">
-                    <img src="~/samples/brain-2.png" alt="" height="100%">
-                    <div style="background:#637493; height:25px"></div>
+                <span class="logo-lg">
+                    <div class="logo-lg">
+                        <div class="col-12 row logo-lg" style="height:45px">
+                            <div class="col-6 logo-lg" style="padding:0; ">
+                                <span class="logo-lg" style="float: right">
+                                    <img src="~/samples/brain.png" alt="" style="height: 45px;" />
+                                </span>
+                            </div>
+                            <div class="col-6 logo-lg" style="padding:0;">
+                                <h4 style="color:white; float:left; padding-top:8px">Portal de TI</h4>
+                            </div>
+                        </div>
+                        <div style="background:#637493; height:25px; margin:0">
+                        </div>
+                    </div>
                 </span>
+
+                
                 <span class="logo-sm" style="height:45px">
                     <img src="~/samples/brain.png" alt="" height="100%">
                     <div style="background:#637493; height:25px"></div>
@@ -722,14 +736,16 @@
                                     <ul class="side-nav">
                                         @foreach (MenuDB menu in listMenu.Where(w => w.IdPai == null))
                                         {
+                                            var existe = listMenu.Any(a => a.IdPai == menu.Id);
+
                                             <li class="side-nav-item menuitem-active" style="color:#4d6184">
-                                                <a data-bs-toggle="collapse" style="color:#4d6184" href="#menu-@menu.Id" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
-                                                    <i style="color:#4d6184" class="fas fa-home"></i>
+                                                <a data-bs-toggle="collapse" style="color:#4d6184" href="@(!existe?menu.Link:$"#menu-{menu.Id}")" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                                    <i style="color:#4d6184" class="@menu.Icon"></i>
                                                     <span style="color:#4d6184"> @menu.Nome</span>
                                                     <span style="color:#4d6184; float: right;" class="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "fas fa-chevron-down":"" )"></span>
 
                                                 </a>
-                                                @if (listMenu.Any(a => a.IdPai == menu.Id))
+                                                @if (existe)
                                                 {
                                                     <div class="collapse" id="menu-@menu.Id">
                                                         <ul class="side-nav-second-level">
@@ -771,7 +787,7 @@
                 <!-- Topbar Start -->
                 <div class="navbar-custom" style="padding:0 0; margin:0 0">
                     <div id="authentication">
-                        <ul class="list-unstyled topbar-menu float-end mb-0">
+                        <ul class="list-unstyled topbar-menu float-end mb-0" style="margin-top: -10px;">
                             <button style="border: none; color: #313a46; height: 70px; line-height: 70px; width: 60px; background-color: transparent; font-size: 24px; cursor: pointer; float: left; z-index: 1; position: relative; margin-left: -24px;">
                                 <i class="fas fa-cog" style="color:white"></i>
                             </button>
@@ -818,7 +834,7 @@
                                 </div>-->
                             </li>
                         </ul>
-                        <button class="button-menu-mobile open-left" style="padding-left:40px">
+                        <button class="button-menu-mobile open-left" style="padding-left:40px; margin-top: -10px;">
                             <i class="fas fa-bars" style="color:white"></i>
                         </button>
                     </div>

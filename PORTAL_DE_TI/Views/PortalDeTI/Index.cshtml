@@ -27,7 +27,7 @@
                 @foreach (BannerDB banners in banner)
                 {
                     <div class="carousel-item @(banners.Id == banner.FirstOrDefault().Id ? "active" : "" )">
-                        <img id="banner-@banners.Id" src="@banners.CaminhoImg" class="d-block" style="width:100%" alt="...">
+                        <img id="banner-@banners.Id" src="@banners.CaminhoImg" class="d-block" style="width:100%; height: 21rem;" alt="...">
                         <div class="carousel-caption d-none d-md-block" style="background:rgba(90, 90, 90, 0.8); width:100%">
                             <h5>@banners.Banner</h5>
                             <p>@banners.BannerDet</p>
@@ -51,18 +51,18 @@
         <div class="cards">
             <div class="row " style="height:50%">
                 <div class="col-sm-6 no-padding cards-item-left cards-item-top">
-                    <a href="#"><img src=@banner4.ToArray()[0].CaminhoImg style="height:93%; "></a>
+                    <a href="#"><img src=@banner4.ToArray()[0].CaminhoImg style="height:9.5rem; "></a>
                 </div>
                 <div class="col-sm-6 no-padding cards-item-right cards-item-top">
-                    <a href="#"><img src=@banner4.ToArray()[1].CaminhoImg style="height:93%; "></a>
+                    <a href="#"><img src=@banner4.ToArray()[1].CaminhoImg style="height:9.5rem; "></a>
                 </div>
             </div>
             <div class="row " style="height:50%">
                 <div class="col-sm-6 no-padding cards-item-left cards-item-bottom">
-                    <a href="#"><img src=@banner4.ToArray()[2].CaminhoImg style="height:97%"></a>
+                    <a href="#"><img src=@banner4.ToArray()[2].CaminhoImg style="height: 9.5rem;"></a>
                 </div>
                 <div class="col-sm-6 no-padding cards-item-right cards-item-bottom">
-                    <a href="#"><img src=@banner4.ToArray()[3].CaminhoImg style="height:97%"></a>
+                    <a href="#"><img src=@banner4.ToArray()[3].CaminhoImg style="height:9.5rem;"></a>
                 </div>
             </div>
         </div>

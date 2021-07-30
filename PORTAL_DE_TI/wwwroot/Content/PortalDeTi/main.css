@@ -1,4 +1,9 @@
-﻿#authentication {
+﻿:root {
+    font-size: 1vw;
+}
+
+
+#authentication {
     background-image: url('/Content/PortalDeTi/imgs/top-background.png');
     background-repeat: repeat-y;
     background-size: 100%;
