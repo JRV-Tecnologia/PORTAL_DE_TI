@@ -28,7 +28,7 @@
                 {
                     <div class="carousel-item @(banners.Id == banner.FirstOrDefault().Id ? "active" : "" )">
                         <img id="banner-@banners.Id" src="@banners.CaminhoImg" class="d-block" style="width:100%" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
+                        <div class="carousel-caption d-none d-md-block" style="background:rgba(90, 90, 90, 0.8); width:100%">
                             <h5>@banners.Banner</h5>
                             <p>@banners.BannerDet</p>
                         </div>
