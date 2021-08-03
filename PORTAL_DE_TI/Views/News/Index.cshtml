@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutPortalDeTI";
+    List<NewsDB> news = (List<NewsDB>)ViewBag.News;
+}
+
+@section Styles {
+}
+<div class="col-12" style="display:flex ;flex-direction:row-reverse; padding-right:25px">
+    <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
+        <input type="text" class="form-control data-tables-search" placeholder="Pesquisar" />
+    </div>
+</div>
+<hr>
+<h1>
+    News
+</h1>
+<div class="col-12" style="text-align:center">
+    <table class="table data-tables">
+        <thead>
+            <tr>
+                <th>
+                    Imagem
+                </th>
+                <th>
+                    Descrição
+                </th>
+                <th>
+                    Data
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (NewsDB item in news)
+            {
+                <tr>
+                    <td>
+                        <a href="/news/@item.Id">
+                            <img src="@item.CaminhoImg" class="img-fluid rounded-start" alt="..." style="width:100px">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/news/@item.Id">
+                            @item.Nome
+                            @item.Resenha
+                        </a>
+                    </td>
+                    <td>@item.DataCadastro.ToString("dd/MM/yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@section Scripts {
+
+}

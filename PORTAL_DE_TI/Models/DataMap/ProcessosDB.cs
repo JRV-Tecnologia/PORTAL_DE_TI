@@ -19,5 +19,7 @@ namespace PORTAL_DE_TI.Models
         public String ProcessoDet { get; set; }
         [Column("DATA_CADASTRO")]
         public DateTime DataCadastro { get; set; }
+        [Column("REMOVED")]
+        public Boolean Removed { get; set; }
     }
 }

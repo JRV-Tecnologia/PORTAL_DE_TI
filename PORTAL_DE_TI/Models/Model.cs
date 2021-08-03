@@ -15,7 +15,7 @@ namespace PORTAL_DE_TI.Models
         public PortalContext()
         {
             _connectionString = @"Data Source=Desenvolvimento\SQLEXPRESS;User ID=admin;Password=admin@jrv;Database=DB_Portal_TI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
-
+            //_connectionString = @"Data Source=10.129.179.247;User ID=usrCargaPBI;Password=kX0V3Q@k;Database=DB_PORTAL_TI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
         }
 
         public PortalContext(DbContextOptions<PortalContext> options)

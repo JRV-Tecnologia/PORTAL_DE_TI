@@ -23,5 +23,7 @@ namespace PORTAL_DE_TI.Models
         public Int32 Ordem { get; set; }
         [Column("ICON")]
         public String Icon { get; set; }
+        [Column("REMOVED")]
+        public Boolean Removed { get; set; }
     }
 }

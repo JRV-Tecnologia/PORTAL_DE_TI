@@ -19,13 +19,18 @@
     <!-- third party css end -->
     <!-- App css -->
     <link href="~/css/fontawesome.css" rel="stylesheet" />
-    <script src="https://kit.fontawesome.com/7986e04c50.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7986e04c50.js" crossorigin="anonymous">
+
+        
+
+    </script>
     <link href="~/css/all.css" rel="stylesheet">
     <link href="~/Content/PortalDeTi/main.css" rel="stylesheet" />
     <link href="~/css/dashboard.css" rel="stylesheet" />
     <link href="~/css/icons.min.css" rel="stylesheet" type="text/css">
     <link href="~/css/app.min.css" rel="stylesheet" type="text/css" id="light-style">
     <link href="~/css/app-dark.min.css" rel="stylesheet" type="text/css" id="dark-style" disabled="disabled">
+    <link href="~/Content/dataTable/datatables.css" rel="stylesheet" />
     @RenderSection("Styles", required: false)
     <style type="text/css">
 
@@ -691,7 +696,7 @@
 }</style>
 </head>
 
-<body class="show" data-layout-config="{&quot;leftSideBarTheme&quot;:&quot;dark&quot;,&quot;layoutBoxed&quot;:false, &quot;leftSidebarCondensed&quot;:false, &quot;leftSidebarScrollable&quot;:false,&quot;darkMode&quot;:false, &quot;showRightSidebarOnStart&quot;: true}" data-leftbar-theme="dark" style="visibility: visible;">
+<body id="myDIV" class="show" data-layout-config="{&quot;leftSideBarTheme&quot;:&quot;dark&quot;,&quot;layoutBoxed&quot;:false, &quot;leftSidebarCondensed&quot;:false, &quot;leftSidebarScrollable&quot;:false,&quot;darkMode&quot;:false, &quot;showRightSidebarOnStart&quot;: true}" data-leftbar-theme="dark" style="visibility: visible; overflow: auto">
     <!-- Begin page -->
     <div class="wrapper">
         <!-- ========== Left Sidebar Start ========== -->
@@ -716,7 +721,7 @@
                     </div>
                 </span>
 
-                
+
                 <span class="logo-sm" style="height:45px">
                     <img src="~/samples/brain.png" alt="" height="100%">
                     <div style="background:#637493; height:25px"></div>
@@ -739,7 +744,7 @@
                                             var existe = listMenu.Any(a => a.IdPai == menu.Id);
 
                                             <li class="side-nav-item menuitem-active" style="color:#4d6184">
-                                                <a data-bs-toggle="collapse" style="color:#4d6184" href="@(!existe?menu.Link:$"#menu-{menu.Id}")" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
+                                                <a data-bs-toggle="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "collapse":"" )" style="color:#4d6184" href="@(!existe?menu.Link:$"#menu-{menu.Id}")" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                                     <i style="color:#4d6184" class="@menu.Icon"></i>
                                                     <span style="color:#4d6184"> @menu.Nome</span>
                                                     <span style="color:#4d6184; float: right;" class="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "fas fa-chevron-down":"" )"></span>
@@ -834,7 +839,7 @@
                                 </div>-->
                             </li>
                         </ul>
-                        <button class="button-menu-mobile open-left" style="padding-left:40px; margin-top: -10px; display:none">
+                        <button class="button-menu-mobile open-left" style="padding-left:40px; margin-top: -10px;">
                             <i class="fas fa-bars" style="color:white"></i>
                         </button>
                     </div>
@@ -845,12 +850,6 @@
                 </div>
                 <!-- end Topbar -->
                 <!-- Start Content-->
-                <div class="col-12" style="display:flex ;flex-direction:row-reverse; padding-right:25px">
-                    <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
-                        <input type="text" class="form-control" placeholder="Pesquisar" />
-                    </div>
-                </div>
-                <hr>
                 @RenderBody()
                 <!-- container -->
 
@@ -883,6 +882,13 @@
     <!-- third party js ends -->
     <!-- demo app -->
     <script src="~/js/pages/demo.dashboard.js"></script>
+    <script src="~/Content/dataTable/datatables.js"></script>
+    <script src="~/Content/dataTable/moment.min.js"></script>
+    <script src="~/Content/dataTable/datetime-moment.js"></script>
+    <script src="~/Content/PortalDeTi/main.js"></script>
+
+    <script>document.getElementById("myDIV").style.overflow = "scroll";</script>
+
     <!-- end demo js-->
     @RenderSection("Scripts", required: false)
     <svg id="SvgjsSvg1001" width="2" height="0" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs" style="overflow: hidden; top: -100%; left: -100%; position: absolute; opacity: 0;"><defs id="SvgjsDefs1002"></defs><polyline id="SvgjsPolyline1003" points="0,0"></polyline><path id="SvgjsPath1004" d="M0 0 "></path></svg><div class="daterangepicker ltr single opensright"><div class="ranges"></div><div class="drp-calendar left single" style="display: block;"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-calendar right" style="display: none;"><div class="calendar-table"></div><div class="calendar-time" style="display: none;"></div></div><div class="drp-buttons"><span class="drp-selected"></span><button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button><button class="applyBtn btn btn-sm btn-primary" disabled="disabled" type="button">Apply</button> </div></div><div class="jvectormap-label" style="display: none; left: 1011.34px; top: 715px;">Senegal</div>

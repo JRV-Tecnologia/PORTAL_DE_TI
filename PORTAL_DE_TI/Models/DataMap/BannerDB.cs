@@ -23,7 +23,8 @@ namespace PORTAL_DE_TI.Models
         public DateTime DataCadastro { get; set; }
         [Column("LINK")]
         public String Link { get; set; }
-
+        [Column("REMOVED")]
+        public Boolean Removed { get; set; }
     }
 }
 

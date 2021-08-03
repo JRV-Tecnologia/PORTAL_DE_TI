@@ -8,15 +8,23 @@
     List<ProcessosDB> processos = (List<ProcessosDB>)ViewBag.Processos;
     List<BannerDB> banner = (List<BannerDB>)ViewBag.Banner;
     List<Banner4DB> banner4 = (List<Banner4DB>)ViewBag.Banner4;
+    ResultUserAD infoAD = (ResultUserAD)ViewBag.infoAD;
 }
 @section Styles {
 }
 
 @* Primeira ROW *@
+<div class="col-12" style="display:flex ;flex-direction:row-reverse; padding-right:25px">
+    <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
+        <input type="text" class="form-control" placeholder="Pesquisar" />
+    </div>
+</div>
+<hr>
 <div class="row col-12">
     @* Carousel *@
     <div class="col-md-7">
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+            @infoAD.nomeCompleto
             <ol class="carousel-indicators">
                 @foreach (BannerDB slide in banner)
                 {
@@ -51,18 +59,18 @@
         <div class="cards">
             <div class="row " style="height:50%">
                 <div class="col-sm-6 no-padding cards-item-left cards-item-top">
-                    <a href="#"><img src=@banner4.ToArray()[0].CaminhoImg style="height:9.5rem; "></a>
+                    <a href="@banner4.ToArray()[0].Link"><img src=@banner4.ToArray()[0].CaminhoImg style="height:9.5rem; "></a>
                 </div>
                 <div class="col-sm-6 no-padding cards-item-right cards-item-top">
-                    <a href="#"><img src=@banner4.ToArray()[1].CaminhoImg style="height:9.5rem; "></a>
+                    <a href="@banner4.ToArray()[1].Link"><img src=@banner4.ToArray()[1].CaminhoImg style="height:9.5rem; "></a>
                 </div>
             </div>
             <div class="row " style="height:50%">
                 <div class="col-sm-6 no-padding cards-item-left cards-item-bottom">
-                    <a href="#"><img src=@banner4.ToArray()[2].CaminhoImg style="height: 9.5rem;"></a>
+                    <a href="@banner4.ToArray()[2].Link"><img src=@banner4.ToArray()[2].CaminhoImg style="height: 9.5rem;"></a>
                 </div>
                 <div class="col-sm-6 no-padding cards-item-right cards-item-bottom">
-                    <a href="#"><img src=@banner4.ToArray()[3].CaminhoImg style="height:9.5rem;"></a>
+                    <a href="@banner4.ToArray()[3].Link"><img src=@banner4.ToArray()[3].CaminhoImg style="height:9.5rem;"></a>
                 </div>
             </div>
         </div>
@@ -133,8 +141,5 @@
 </div><!--/row-->
 
 @section Scripts {
-    <script src="~/Content/PortalDeTi/main.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="~/Content/PortalDeTi/index.js"></script>
 }
