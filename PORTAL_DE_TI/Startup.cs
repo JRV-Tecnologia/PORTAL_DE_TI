@@ -90,8 +90,13 @@ namespace PORTAL_DE_TI
                      "highlight/{id}",
                      new { controller = "highlight", action = "Detail", id = "" });
                 routes.MapRoute(
+                     "BannerDetail",
+                     "banner/{id}",
+                     new { controller = "banner", action = "Detail", id = "" });
+                routes.MapRoute(
                     name: "default",
                     template: "{controller=PortalDeTi}/{action=Index}/{id?}");
+                
 
             });
             app.Run(async (context) =>

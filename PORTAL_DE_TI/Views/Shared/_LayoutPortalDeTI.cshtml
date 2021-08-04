@@ -15,12 +15,14 @@
 
     <!-- third party css -->
     <link href="~/css/vendor/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css">
+    
     <!-- third party css end -->
     <!-- App css -->
+
     <link href="~/css/fontawesome.css" rel="stylesheet" />
     <script src="https://kit.fontawesome.com/7986e04c50.js" crossorigin="anonymous">
-
     </script>
+
     <link href="~/css/all.css" rel="stylesheet">
     <link href="~/Content/PortalDeTi/main.css" rel="stylesheet" />
     <link href="~/css/dashboard.css" rel="stylesheet" />
@@ -60,7 +62,7 @@
 
 
                 <span class="logo-sm" style="height:45px">
-                    <img src="~/samples/brain.png" alt="" height="100%"/>
+                    <img src="~/samples/brain.png" alt="" height="100%" />
                     <div style="background:#637493; height:25px"></div>
                 </span>
             </a>
@@ -195,7 +197,7 @@
                 <!-- Start Content-->
                 <div class="container-fluid">
                     @RenderBody()
-                    
+
                 </div>
                 <!-- container -->
 
@@ -204,19 +206,19 @@
             <!--Footer Start-->
             <footer class="footer" style="margin-top:20px;position: sticky; bottom:0 ">
                 @*<div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            2021 
-                        </div>
-                        <div class="col-md-6">
-                            <div class="text-md-end footer-links d-none d-md-block">
-                                <a href="javascript: void(0);">About</a>
-                                <a href="javascript: void(0);">Support</a>
-                                <a href="javascript: void(0);">Contact Us</a>
+                        <div class="row">
+                            <div class="col-md-6">
+                                2021
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-end footer-links d-none d-md-block">
+                                    <a href="javascript: void(0);">About</a>
+                                    <a href="javascript: void(0);">Support</a>
+                                    <a href="javascript: void(0);">Contact Us</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>*@
+                    </div>*@
             </footer>
         </div>
         <!--end Footer->
@@ -237,18 +239,22 @@
     <script src="~/js/app.min.js"></script>
 
     <!-- third party js -->
-    <script src="~/js/vendor/apexcharts.min.js"></script>
+    @*<script src="~/js/vendor/apexcharts.min.js"></script>*@
     <script src="~/js/vendor/jquery-jvectormap-1.2.2.min.js"></script>
     <script src="~/js/vendor/jquery-jvectormap-world-mill-en.js"></script>
+
+
+
+
     <!-- third party js ends -->
     <!-- demo app -->
-    <script src="~/js/pages/demo.dashboard.js"></script>
+    @*<script src="~/js/pages/demo.dashboard.js"></script>*@
     <script src="~/Content/dataTable/datatables.js"></script>
     <script src="~/Content/dataTable/moment.min.js"></script>
     <script src="~/Content/dataTable/datetime-moment.js"></script>
     <script src="~/Content/PortalDeTi/main.js"></script>
 
-    <script>document.getElementById("myDIV").style.overflow = "scroll";</script>
+
 
     <!-- end demo js-->
     @RenderSection("Scripts", required: false)
