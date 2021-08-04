@@ -52,7 +52,7 @@
                                 </span>
                             </div>
                             <div class="col-6 logo-lg" style="padding:0;">
-                                <h4 style="color:white; float:left; padding-top:8px">Portal de TI</h4>
+                                <h5 style="color:white; float:left; padding-top:6px">Portal de TI</h5>
                             </div>
                         </div>
                         <div style="background:#637493; height:25px; margin:0">
@@ -83,9 +83,8 @@
                                             <li class="side-nav-item menuitem-active" style="color:#4d6184">
                                                 <a data-bs-toggle="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "collapse":"" )" style="color:#4d6184" href="@(!existe?menu.Link:$"#menu-{menu.Id}")" aria-expanded="false" aria-controls="sidebarDashboards" class="side-nav-link">
                                                     <i style="color:#4d6184" class="@menu.Icon"></i>
-                                                    <span style="color:#4d6184"> @menu.Nome</span>
-                                                    <span style="color:#4d6184; float: right;" class="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "fas fa-chevron-down":"" )"></span>
-
+                                                    <span style="color:#4d6184; font-size:18px"> @menu.Nome</span>
+                                                    <span style="color:#4d6184; float: right; margin-top:5px" class="@(listMenu.Exists(e => e.IdPai == menu.Id) ? "fas fa-chevron-down":"" )"></span>
                                                 </a>
                                                 @if (existe)
                                                 {

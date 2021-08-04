@@ -22,11 +22,22 @@ namespace PORTAL_DE_TI.Models
             : base(options)
         { }
 
-        public DbSet<NewsDB> NewsDBs { get; set; }
-        public DbSet<MenuDB> MenuDBs { get; set; }
+        public DbSet<AcaoDB> AcaoDBs { get; set; }
+        public DbSet<AcessoDB> AcessoDBs { get; set; }
+        public DbSet<AvisoDB> AvisoDBs { get; set; }
         public DbSet<BannerDB> BannerDBs { get; set; }
         public DbSet<Banner4DB> Banner4DBs { get; set; }
+        public DbSet<FAQDB> FAQDBs { get; set; }
+        public DbSet<MenuDB> MenuDBs { get; set; }
+        public DbSet<NewsDB> NewsDBs { get; set; }
+        public DbSet<PerfilDB> PerfilDBs { get; set; }
+        public DbSet<PerfilAcaoDB> PerfilAcaoDBs { get; set; }
+        public DbSet<PerfilUsuarioDB> PerfilUsuarioDBs { get; set; }
         public DbSet<ProcessosDB> ProcessoDBs { get; set; }
+        public DbSet<TipoAcaoDB> TipoAcaoDBs { get; set; }
+        public DbSet<UsuarioDB> UsuarioDBs { get; set; }
+
+
 
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
