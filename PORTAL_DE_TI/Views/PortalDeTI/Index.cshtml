@@ -86,27 +86,29 @@
 
     <div class="col-md-7" style="margin-top: 10px; height: 100%;">
         <ul class="list-group">
-            <li class="list-group-item active" aria-current="true">News and Memos</li>
+            <li class="list-group-item active" aria-current="true"><a href="/news" style="color:#fff">News and Memos</a></li>
 
             @foreach (NewsDB item in news)
             {
                 <li class="list-group-item ">
-                    <div class="row g-0">
-                        <div class="col-md-2 no-padding">
-                            <img src="@item.CaminhoImg" class="img-fluid rounded-start" alt="..." style="width:100%">
+                    <a href="/news/@item.Id">
+                        <div class="row g-0">
+                            <div class="col-md-2 no-padding">
+                                <img src="@item.CaminhoImg" class="img-fluid rounded-start" alt="..." style="width:100%">
+                            </div>
+                            <div class="col-md-9">
+                                <h5 class="card-title">
+                                    @item.Nome
+                                </h5>
+                                <p class="card-text">
+                                    @item.Resenha
+                                </p>
+                                <p class="card-text">
+                                    @DateTime.Now.ToString("dd/MM/yyyy")
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-9">
-                            <h5 class="card-title">
-                                @item.Nome
-                            </h5>
-                            <p class="card-text">
-                                @item.Resenha
-                            </p>
-                            <p class="card-text">
-                                @DateTime.Now.ToString("dd/MM/yyyy")
-                            </p>
-                        </div>
-                    </div>
+                    </a>
                 </li>
             }
 
