@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ namespace PORTAL_DE_TI.Models
     [Table("TB_USUARIO")]
     public class UsuarioDB
     {
+        [Key]
         [Column("ID_USUARIO")]
         public Int32 ID_USUARIO { get; set; }
 

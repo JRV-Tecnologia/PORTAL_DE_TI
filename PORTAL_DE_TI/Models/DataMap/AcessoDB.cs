@@ -10,7 +10,7 @@ namespace PORTAL_DE_TI.Models
     [Table("TB_ACESSOS")]
     public class AcessoDB
     {
-        [Column("ID")]
+        [Column("ID_USUARIO")]
         public Int32 Id { get; set; }
         [Column("DATA_HORA")]
         public DateTime DataHora { get; set; }

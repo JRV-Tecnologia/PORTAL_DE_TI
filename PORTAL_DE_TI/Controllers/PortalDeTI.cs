@@ -20,7 +20,7 @@ namespace PORTAL_DE_TI.Controllers
         public IActionResult Index()
         {            
 
-            List<AcaoDB> acao = db.AcaoDBs.ToList();
+           // List<AcaoDB> acao = db.AcaoDBs.ToList();
 
             List<AcessoDB> acesso = db.AcessoDBs.ToList();
 

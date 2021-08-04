@@ -38,8 +38,6 @@ namespace PORTAL_DE_TI.Models
         public DbSet<UsuarioDB> UsuarioDBs { get; set; }
 
 
-
-
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_connectionString);

@@ -8,7 +8,7 @@ using PORTAL_DE_TI.Models;
 
 namespace PORTAL_DE_TI.Controllers
 {
-    public class PrivateController : Controller
+    public class PrivateController : Controller    
     {
         public PortalContext db = new PortalContext();
         public override void OnActionExecuting(ActionExecutingContext filterContext)
