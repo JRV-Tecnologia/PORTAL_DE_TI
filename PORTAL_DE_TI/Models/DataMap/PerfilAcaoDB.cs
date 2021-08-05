@@ -17,6 +17,8 @@ namespace PORTAL_DE_TI.Models
         public Int32 IdAcao { get; set; }
         [Column("ID_PERFIL")]
         public Int32 IdPerfil { get; set; }
+        [Column("ID_MENU")]
+        public Int32 IdMenu { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
     }

@@ -25,5 +25,7 @@ namespace PORTAL_DE_TI.Models
         public String Icon { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
+        [Column("ID_CONTROLE")]
+        public Int32? IdControle { get; set; }
     }
 }

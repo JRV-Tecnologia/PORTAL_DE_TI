@@ -16,6 +16,8 @@ namespace PORTAL_DE_TI.Models
         public Int32 Id { get; set; }
         [Column("DS_ACAO")]
         public String DsAcao { get; set; }
+        [Column("DS_ACTION")]
+        public String DsAction { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
     }

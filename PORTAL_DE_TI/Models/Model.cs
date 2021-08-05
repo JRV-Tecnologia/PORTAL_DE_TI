@@ -36,7 +36,7 @@ namespace PORTAL_DE_TI.Models
         public DbSet<ProcessosDB> ProcessoDBs { get; set; }
         public DbSet<TipoAcaoDB> TipoAcaoDBs { get; set; }
         public DbSet<UsuarioDB> UsuarioDBs { get; set; }
-
+        public DbSet<ControleDB> ControleDBs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

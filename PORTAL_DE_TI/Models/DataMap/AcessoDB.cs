@@ -14,8 +14,10 @@ namespace PORTAL_DE_TI.Models
         public Int32 Id { get; set; }
         [Column("DATA_HORA")]
         public DateTime DataHora { get; set; }
-        [Column("PAGINA")]
-        public String Pagina { get; set; }
+        [Column("ID_CONTROLE")]
+        public String IdControle { get; set; }
+        [Column("ID_ACAO")]
+        public String IdAcao { get; set; }
     }
 }
 
