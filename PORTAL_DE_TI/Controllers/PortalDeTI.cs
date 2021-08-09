@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PORTAL_DE_TI.Models;
 using PORTAL_DE_TI.Services;
 
 namespace PORTAL_DE_TI.Controllers
 {
+    
     public class PortalDeTI : PrivateController
     {
         UserResolverService _log;
@@ -19,34 +21,16 @@ namespace PORTAL_DE_TI.Controllers
 
         public IActionResult Index()
         {            
-
-           // List<AcaoDB> acao = db.AcaoDBs.ToList();
-
-            List<AcessoDB> acesso = db.AcessoDBs.ToList();
-
-            List<AvisoDB> aviso = db.AvisoDBs.ToList();
-
-            List<FAQDB> faq = db.FAQDBs.ToList();
-
+                       
             List<BannerDB> banner = db.BannerDBs.ToList();
 
             List<Banner4DB> banner4 = db.Banner4DBs.ToList();
 
-            List<NewsDB> news = db.NewsDBs.ToList();
-
-            List<PerfilDB> perfil = db.PerfilDBs.ToList();
-
-            List<PerfilAcaoDB> perfilAcao = db.PerfilAcaoDBs.ToList();
-
-            List<PerfilUsuarioDB> perfilUsuario = db.PerfilUsuarioDBs.ToList();
+            List<NewsDB> news = db.NewsDBs.ToList();          
 
             List<ProcessosDB> processos = db.ProcessoDBs.ToList();
 
-            List<TipoAcaoDB> tipoAcao = db.TipoAcaoDBs.ToList();
-
-            List<UsuarioDB> usuario = db.UsuarioDBs.ToList();
-
-
+          
 
             ViewBag.News = news.OrderByDescending(b => b.DataCadastro).Take(4).Where(n => n.Removed == false).ToList();
 

@@ -11,7 +11,7 @@ namespace PORTAL_DE_TI.Models
     [Table("TB_ACAO")]
     public class AcaoDB
     {
-        
+        [Key]
         [Column("ID_ACAO")]
         public Int32 Id { get; set; }
         [Column("DS_ACAO")]
@@ -20,5 +20,7 @@ namespace PORTAL_DE_TI.Models
         public String DsAction { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
+
+        public List<PerfilAcaoDB> Perfis { get; set; }
     }
 }

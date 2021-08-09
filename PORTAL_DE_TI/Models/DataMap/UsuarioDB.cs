@@ -12,28 +12,23 @@ namespace PORTAL_DE_TI.Models
     {
         [Key]
         [Column("ID_USUARIO")]
-        public Int32 ID_USUARIO { get; set; }
+        public Int32 Id { get; set; }
 
         [Column("NOME")]
-        public String NOME { get; set; }
+        public String Nome { get; set; }
 
         [Column("NOME_COMPLETO")]
-        public String NOME_COMPLETO { get; set; }
+        public String NomeCompleto { get; set; }
 
         [Column("LOGIN")]
-        public String LOGIN { get; set; }
+        public String Login { get; set; }
 
         [Column("MATRICULA")]
-        public String MATRICULA { get; set; }
+        public String Matricula { get; set; }
 
         [Column("EMAIL")]
-        public String EMAIL { get; set; }
-
-        [Column("ID_PERFIL")]
-        public Int32 ID_PERFIL { get; set; }
-
-        [Column("DS_PERFIL")]
-        public String DS_PERFIL { get; set; }
+        public String Email { get; set; }
+   
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
     }

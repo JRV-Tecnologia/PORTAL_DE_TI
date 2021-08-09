@@ -42,5 +42,20 @@ namespace PORTAL_DE_TI.Models
         {
             optionsBuilder.UseSqlServer(_connectionString);
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<PerfilAcaoDB>()
+                .HasOne(p => p.AcaoDB)
+                .WithMany(b => b.Perfis);
+
+
+
+
+
+
+
+        }
+
     }
 }

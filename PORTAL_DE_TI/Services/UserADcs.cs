@@ -67,7 +67,10 @@ namespace PORTAL_DE_TI.Services
                 //infoUsuario = objUsuarioDatas.localizaUsuario(infoAD.matricula);
             }
 
-            infoUsuario.MATRICULA = infoAD.matricula;
+            infoUsuario.Matricula = infoAD.matricula;
+            infoUsuario.Login = infoAD.login;
+            infoUsuario.Nome = infoAD.nome;
+            infoUsuario.NomeCompleto = infoAD.nomeCompleto;
 
             return infoUsuario;
         }

@@ -13,12 +13,19 @@ namespace PORTAL_DE_TI.Models
         [Key]
         [Column("ID_PERFIL_USUARIO")]
         public Int32 IdPerfilUsuario { get; set; }
-        [Column("ID_USUARIO")]
-        public Int32 IdUsuario { get; set; }
-        [Column("ID_PERFIL")]
-        public Int32 IdPerfil { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
+
+        //foreingkey
+       
+        [Column("ID_USUARIO")]
+        public Int32 UsuarioDBId { get; set; }
+        public UsuarioDB UsuarioDB { get; set; }
+
+        [Column("ID_PERFIL")]
+        public Int32 PerfilDBId { get; set; }
+        public PerfilDB PerfilDB { get; set; }
+
     }
 }
 

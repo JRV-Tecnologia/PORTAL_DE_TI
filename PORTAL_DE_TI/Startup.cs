@@ -16,6 +16,7 @@ using System.Security.Principal;
 
 using Microsoft.EntityFrameworkCore;
 using PORTAL_DE_TI.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace PORTAL_DE_TI
 {
@@ -44,8 +45,7 @@ namespace PORTAL_DE_TI
                 o.ForwardClientCertificate = false;
             });
 
-            services.AddAuthentication(IISDefaults.AuthenticationScheme);
-            services.AddAuthentication(HttpSysDefaults.AuthenticationScheme);
+           
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddHttpContextAccessor();
             services.AddTransient<IUserResolverService, UserResolverService>();
@@ -55,6 +55,23 @@ namespace PORTAL_DE_TI
             var connection = @"Data Source=Desenvolvimento\SQLEXPRESS;User ID=admin;Password=admin@jrv;Database=DB_Portal_TI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             //var connection = @"Data Source=10.129.179.247;User ID=usrCargaPBI;Password=kX0V3Q@k;Database=DB_PORTAL_TI;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             services.AddDbContext<PortalContext>(options => options.UseSqlServer(connection));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+           .AddCookie(opt =>
+           {
+               opt.LoginPath = new PathString("/Authentication/Login");
+               opt.LogoutPath = new PathString("/Authentication/Logout");
+               opt.AccessDeniedPath = new PathString("/Authentication/Error");
+               opt.Cookie = new CookieBuilder()
+               {
+                   Name = ".AuthenticateUser",
+                   Expiration = new System.TimeSpan(0, 120, 0),
+                    //Se tiver um domínio...
+                    //Domain = ".site.com.br",
+                };
+           });
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
         }
 
@@ -74,6 +91,8 @@ namespace PORTAL_DE_TI
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            //app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
@@ -125,5 +144,6 @@ namespace PORTAL_DE_TI
                 }
             });
         }
+
     }
 }
