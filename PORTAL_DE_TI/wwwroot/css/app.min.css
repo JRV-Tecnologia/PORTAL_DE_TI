@@ -14858,7 +14858,9 @@ body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .si
 
         .nav-user .account-user-avatar img {
             height: 32px;
-            width: 32px
+            width: 32px;
+            position: absolute;
+            left: 70px;
         }
 
     .nav-user .account-position {
@@ -14869,7 +14871,10 @@ body[data-leftbar-theme=dark][data-leftbar-compact-mode=condensed] .side-nav .si
 
     .nav-user .account-user-name {
         display: block;
-        font-weight: 600
+        font-weight: 600;
+        margin-top: 6px;
+        position: relative;
+        left: -60px;
     }
 
 .button-menu-mobile {

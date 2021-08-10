@@ -1,0 +1,131 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_LayoutPortalDeTI";
+    List<UsuarioDB> usuarios = (List<UsuarioDB>)ViewBag.Usuarios;
+    List<ControleDB> controles = (List<ControleDB>)ViewBag.Controles;
+    
+}
+
+@section Styles {
+}
+
+<div class="col-12" style="display:flex ;flex-direction:row-reverse; padding-right:25px">
+    <div class="col-md-2 col-md-offset-10" style="margin-top:10px; display:flex; float:right">
+        <input type="text" class="form-control data-tables-search" placeholder="Pesquisar" />
+    </div>
+</div>
+
+
+<nav class="nav nav-tabs nav-justified">
+    <a class="nav-item nav-link active" data-toggle="tab" href="#home">Permissões de usuário</a>
+    <a class="nav-item nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+    @*<a class="nav-item nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+        <a class="nav-item nav-link disabled" data-toggle="tab" href="#menu3">Disabled</a>*@
+</nav>
+
+<div class="tab-content">
+    <div id="home" class="tab-pane fade show active">
+        <h4>
+            Usuários
+        </h4>
+        <div class="col-12" style="text-align:center">
+            <table class="table data-tables">
+                <thead>
+                    <tr>
+                        <th>
+                            Nome Completo
+                        </th>
+                        <th>
+                            Matricula
+                        </th>
+                        <th>
+                            Ações
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (UsuarioDB item in usuarios)
+                    {
+                        <tr>
+                            <td>
+                                <a>
+                                    @item.NomeCompleto
+                                </a>
+                            </td>
+                            <td>
+                                <a>
+                                    @item.Matricula
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                    Permissões
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Permissões</h5>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <nav class="nav nav-tabs nav-justified">
+                            @foreach (ControleDB item in controles)
+                            {
+                                <a class="nav-item nav-link" data-toggle="tab" href="#@item.DsController">@item.DsController</a>
+                            }
+                        </nav>
+
+                        <div class="tab-content col-md-8">
+                            @foreach (ControleDB item in controles)
+                            {
+                                @if (item.Id == controles.FirstOrDefault().Id)
+                                {
+                                    <div id="@item.DsController" class="tab-pane fade show active ">
+                                        <h3>@item.DsController</h3>
+                                        <p>Some content in menu @item.Id</p>
+                                    </div>
+                                }
+                                <div id="@item.DsController" class="tab-pane fade">
+                                    <h3>@item.DsController</h3>
+                                    <p>Some content in menu @item.Id</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu1" class="tab-pane fade">
+        <h3>Menu 1</h3>
+        <p>Some content in menu 1.</p>
+    </div>
+    @*<div id="menu2" class="tab-pane fade">
+            <h3>Menu 2</h3>
+            <p>Some content in menu 2.</p>
+        </div>*@
+</div>
+
+@section Scripts {
+    <!-- 2. GOOGLE JQUERY JS v3.2.1  JS !-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <!-- 3. BOOTSTRAP v4.0.0         JS !-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+}
