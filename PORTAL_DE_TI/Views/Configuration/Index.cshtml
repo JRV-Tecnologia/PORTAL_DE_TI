@@ -5,7 +5,10 @@
     Layout = "_LayoutPortalDeTI";
     List<UsuarioDB> usuarios = (List<UsuarioDB>)ViewBag.Usuarios;
     List<ControleDB> controles = (List<ControleDB>)ViewBag.Controles;
-    
+    List<AcaoControleDB> permissoes = (List<AcaoControleDB>)ViewBag.Permissoes;
+    List<PerfilDB> perfis = (List<PerfilDB>)ViewBag.Perfis;
+
+
 }
 
 @section Styles {
@@ -19,8 +22,8 @@
 
 
 <nav class="nav nav-tabs nav-justified">
-    <a class="nav-item nav-link active" data-toggle="tab" href="#home">Permissões de usuário</a>
-    <a class="nav-item nav-link" data-toggle="tab" href="#menu1">Menu 1</a>
+    <a class="nav-item nav-link active" data-toggle="tab" href="#home">Permissões de Usuário</a>
+    <a class="nav-item nav-link" data-toggle="tab" href="#perfil">Permissões de Grupo</a>
     @*<a class="nav-item nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
         <a class="nav-item nav-link disabled" data-toggle="tab" href="#menu3">Disabled</a>*@
 </nav>
@@ -60,7 +63,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                <a href="#" data-toggle="modal" data-target="#modalPermissoesDeUsuario">
                                     Permissões
                                 </a>
                             </td>
@@ -70,57 +73,169 @@
             </table>
         </div>
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="modalPermissoesDeUsuario" tabindex="-1" role="dialog" aria-labelledby="permissoesDeUsuarioLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Permissões</h5>
+                        <h5 class="modal-title" id="permissoesDeUsuarioLabel">Permissões</h5>
                     </div>
 
-                    <div class="modal-body">
+                    <div class="modal-body row">
+                        <div class="col-3">
+                            <div class="btn-group btn-lg">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUsuario" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                    Selecione uma ação
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownUsuario">
+                                    <div class="nav flex-column nav-tabs nav-justified" aria-orientation="vertical">
+                                        @foreach (ControleDB item in controles)
+                                        {
+                                            <a class="dropdown-item nav-item nav-link usuario" onblur="buttonNameUsuario()" data-content="@item.DsController" data-toggle="tab" href="#usr-@item.DsController">@item.DsController</a>
+                                        }
+                                    </div>
+                                </div>
 
-                        <nav class="nav nav-tabs nav-justified">
-                            @foreach (ControleDB item in controles)
-                            {
-                                <a class="nav-item nav-link" data-toggle="tab" href="#@item.DsController">@item.DsController</a>
-                            }
-                        </nav>
+                            </div>
 
-                        <div class="tab-content col-md-8">
-                            @foreach (ControleDB item in controles)
-                            {
-                                @if (item.Id == controles.FirstOrDefault().Id)
+                        </div>
+                        <div class="col-9">
+                            <div class="tab-content">
+                                @foreach (ControleDB controle in controles)
                                 {
-                                    <div id="@item.DsController" class="tab-pane fade show active ">
-                                        <h3>@item.DsController</h3>
-                                        <p>Some content in menu @item.Id</p>
+                                    <div id="usr-@controle.DsController" class="tab-pane fade show">
+                                        <div class="form-check">
+                                            @foreach (AcaoControleDB permissao in permissoes.Where(w => w.ControleDBId == controle.Id))
+                                            {
+                                                <div>
+                                                    <input class="form-check-input" type="checkbox" value="" id="prm-@permissao.AcaoDBId-@permissao.ControleDBId">
+                                                    <label class="form-check-label" for="prm-@permissao.AcaoDBId-@permissao.ControleDBId">
+                                                        @permissao.AcaoDB.DsAcao
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+
                                     </div>
                                 }
-                                <div id="@item.DsController" class="tab-pane fade">
-                                    <h3>@item.DsController</h3>
-                                    <p>Some content in menu @item.Id</p>
-                                </div>
-                            }
+
+                            </div>
                         </div>
+
                     </div>
 
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="perfil" class="tab-pane fade show">
+        <h4>
+            Grupos
+        </h4>
+        <div class="col-12" style="text-align:center">
+            <table class="table data-tables">
+                <thead>
+                    <tr>
+                        <th>
+                            Grupo
+                        </th>
+
+                        <th>
+                            Ações
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (PerfilDB item in perfis)
+                    {
+                        <tr>
+                            <td>
+                                <a>
+                                    @item.DsPerfil
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" data-toggle="modal" data-target="#modalPermissoesDeGrupo">
+                                    Permissões
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalPermissoesDeGrupo" tabindex="-1" role="dialog" aria-labelledby="permissoesDeGrupoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="permissoesDeGrupoLabel">Permissões</h5>
                     </div>
+
+                    <div class="modal-body row">
+                        <div class="col-3">
+                            <div class="btn-group btn-lg">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGrupo" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                    Selecione uma ação
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownGrupo">
+                                    <div class="nav flex-column nav-tabs nav-justified" aria-orientation="vertical">
+                                        @foreach (ControleDB item in controles)
+                                        {
+                                            <a class="dropdown-item nav-item nav-link grupo" onblur="buttonNameGrupo()" data-content="@item.DsController" data-toggle="tab" href="#grp-@item.DsController">@item.DsController</a>
+                                        }
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-9">
+                            <div class="tab-content">
+                                @foreach (ControleDB controle in controles)
+                                {
+                                    <div id="grp-@controle.DsController" class="tab-pane fade show">
+                                        <div class="form-check">
+                                            @foreach (AcaoControleDB permissao in permissoes.Where(w => w.ControleDBId == controle.Id))
+                                            {
+                                                <div>
+                                                    <input class="form-check-input" type="checkbox" value="" id="prm-@permissao.AcaoDBId-@permissao.ControleDBId">
+                                                    <label class="form-check-label" for="prm-@permissao.AcaoDBId-@permissao.ControleDBId">
+                                                        @permissao.AcaoDB.DsAcao
+                                                    </label>
+                                                </div>
+                                            }
+                                        </div>
+
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div id="menu1" class="tab-pane fade">
-        <h3>Menu 1</h3>
-        <p>Some content in menu 1.</p>
-    </div>
-    @*<div id="menu2" class="tab-pane fade">
-            <h3>Menu 2</h3>
-            <p>Some content in menu 2.</p>
-        </div>*@
+@*<div id="menu2" class="tab-pane fade">
+        <h3>Menu 2</h3>
+        <p>Some content in menu 2.</p>
+    </div>*@
 </div>
 
 @section Scripts {
@@ -129,3 +244,17 @@
     <!-- 3. BOOTSTRAP v4.0.0         JS !-->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 }
+
+<script>
+    function buttonNameGrupo() {
+        let selectedGrupo = document.querySelector(".dropdown-item.active.show.grupo").textContent;
+        document.querySelector("#dropdownGrupo").innerHTML = selectedGrupo;
+    }
+
+    function buttonNameUsuario() {
+        let selectedUsuario = document.querySelector(".dropdown-item.active.show.usuario").textContent;
+        document.querySelector("#dropdownUsuario").innerHTML = selectedUsuario;
+    }
+
+
+</script>

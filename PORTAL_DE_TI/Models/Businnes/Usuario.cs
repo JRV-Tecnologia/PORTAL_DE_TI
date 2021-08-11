@@ -42,5 +42,19 @@ namespace PORTAL_DE_TI.Models.Businnes
                 return null;
             } 
         }
+
+        //public List<UsuarioDB> FindAll()
+        //{
+        //    //List<UsuarioDB> list = db.UsuarioDBs.ToList();
+
+        //    //foreach(UsuarioDB usuario in list)
+        //    //{
+        //    //    usuario.PerfilAcaoDBList = db.PerfilAcaoDBs.Where(w => w.)
+        //    //}
+
+        //    //return list;
+        //}
+
+
     }
 }

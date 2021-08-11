@@ -37,6 +37,7 @@ namespace PORTAL_DE_TI.Models
         public DbSet<TipoAcaoDB> TipoAcaoDBs { get; set; }
         public DbSet<UsuarioDB> UsuarioDBs { get; set; }
         public DbSet<ControleDB> ControleDBs { get; set; }
+        public DbSet<AcaoControleDB> AcaoControleDBs { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -50,7 +51,8 @@ namespace PORTAL_DE_TI.Models
                 .WithMany(b => b.Perfis);
 
 
-
+            modelBuilder.Entity<AcaoControleDB>()
+       .HasKey(c => new { c.AcaoDBId, c.ControleDBId });
 
 
 
