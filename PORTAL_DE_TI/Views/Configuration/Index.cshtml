@@ -8,6 +8,8 @@
     List<AcaoControleDB> permissoes = (List<AcaoControleDB>)ViewBag.Permissoes;
     List<PerfilDB> perfis = (List<PerfilDB>)ViewBag.Perfis;
 
+    var selected = "";
+
 
 }
 
@@ -65,6 +67,9 @@
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#modalPermissoesDeUsuario">
                                     Permissões
+                                </a> |
+                                <a href="#" data-toggle="modal" data-target="#modalPermissoesDeUsuarioMembros">
+                                    Grupos
                                 </a>
                             </td>
                         </tr>
@@ -75,34 +80,26 @@
         <!-- Modal -->
         <div class="modal fade" id="modalPermissoesDeUsuario" tabindex="-1" role="dialog" aria-labelledby="permissoesDeUsuarioLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
+                <div class="modal-content" style="min-height:300px;">
                     <div class="modal-header">
                         <h5 class="modal-title" id="permissoesDeUsuarioLabel">Permissões</h5>
                     </div>
 
                     <div class="modal-body row">
-                        <div class="col-3">
-                            <div class="btn-group btn-lg">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownUsuario" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                                    Selecione uma ação
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownUsuario">
-                                    <div class="nav flex-column nav-tabs nav-justified" aria-orientation="vertical">
-                                        @foreach (ControleDB item in controles)
-                                        {
-                                            <a class="dropdown-item nav-item nav-link usuario" onblur="buttonNameUsuario()" data-content="@item.DsController" data-toggle="tab" href="#usr-@item.DsController">@item.DsController</a>
-                                        }
-                                    </div>
-                                </div>
-
-                            </div>
-
+                        <div class="col-12">
+                            <select class="form-select form-select mb-3" id="permissionUser" aria-label=".form-select-lg example" onchange="getSelectedPermissionUser()">
+                                <option selected disabled>Selecione uma ação</option>
+                                @foreach (ControleDB item in controles)
+                                {
+                                    <option value="@item.DsController" href="#usr-@item.DsController">@item.DsController</option>
+                                }
+                            </select>
                         </div>
-                        <div class="col-9">
+                        <div class="col-12">
                             <div class="tab-content">
                                 @foreach (ControleDB controle in controles)
                                 {
-                                    <div id="usr-@controle.DsController" class="tab-pane fade show">
+                                    <div id="usr-@controle.DsController" class="tab-pane fade show usuario-tab-pane">
                                         <div class="form-check">
                                             @foreach (AcaoControleDB permissao in permissoes.Where(w => w.ControleDBId == controle.Id))
                                             {
@@ -122,16 +119,57 @@
                         </div>
 
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                    </div>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
-                </div>
+
             </div>
         </div>
 
+        <div class="modal fade" id="modalPermissoesDeUsuarioMembros" tabindex="-1" role="dialog" aria-labelledby="permissoesDeUsuarioLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content" style="min-height:300px;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="permissoesDeUsuarioLabel">Grupos do Membro</h5>
+                    </div>
+
+                    <div class="modal-body row">
+                        <div class="col-12">
+
+                            @foreach (PerfilDB item in perfis)
+                            {
+                                <div id="usr-@item.DsPerfil" class="tab-pane fade show">
+                                    <div class="form-check">
+                                        @foreach (AcaoControleDB permissao in permissoes.Where(w => w.ControleDBId == item.IdPerfil))
+                                        {
+                                            <div>
+                                                <input class="form-check-input" type="checkbox" value="" id="prm-@item.IdPerfil">
+                                                <label class="form-check-label" for="prm-@item.IdPerfil">
+                                                    @item.DsPerfil
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+
+                                </div>
+                            }
+
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
     </div>
 
     <div id="perfil" class="tab-pane fade show">
@@ -163,6 +201,9 @@
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#modalPermissoesDeGrupo">
                                     Permissões
+                                </a> |
+                                <a href="#" data-toggle="modal" data-target="#modalPermissoesDeGrupoMembro">
+                                    Membros
                                 </a>
                             </td>
                         </tr>
@@ -173,34 +214,27 @@
         <!-- Modal -->
         <div class="modal fade" id="modalPermissoesDeGrupo" tabindex="-1" role="dialog" aria-labelledby="permissoesDeGrupoLabel" aria-hidden="true">
             <div class="modal-dialog modal-xl" role="document">
-                <div class="modal-content">
+                <div class="modal-content" style="min-height:300px">
                     <div class="modal-header">
                         <h5 class="modal-title" id="permissoesDeGrupoLabel">Permissões</h5>
                     </div>
 
                     <div class="modal-body row">
-                        <div class="col-3">
-                            <div class="btn-group btn-lg">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownGrupo" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                                    Selecione uma ação
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownGrupo">
-                                    <div class="nav flex-column nav-tabs nav-justified" aria-orientation="vertical">
-                                        @foreach (ControleDB item in controles)
-                                        {
-                                            <a class="dropdown-item nav-item nav-link grupo" onblur="buttonNameGrupo()" data-content="@item.DsController" data-toggle="tab" href="#grp-@item.DsController">@item.DsController</a>
-                                        }
-                                    </div>
-                                </div>
-
-                            </div>
+                        <div class="col-12">
+                            <select class="form-select form-select mb-3" id="permissionGroup" aria-label=".form-select-lg example" onchange="getSelectedPermissionGroup()">
+                                <option selected disabled>Selecione uma ação</option>
+                                @foreach (ControleDB item in controles)
+                                {
+                                    <option value="@item.DsController" href="#grp-@item.DsController">@item.DsController</option>
+                                }
+                            </select>
 
                         </div>
-                        <div class="col-9">
+                        <div class="col-12">
                             <div class="tab-content">
                                 @foreach (ControleDB controle in controles)
                                 {
-                                    <div id="grp-@controle.DsController" class="tab-pane fade show">
+                                    <div id="grp-@controle.DsController" class="tab-pane fade show grupo-tab-pane">
                                         <div class="form-check">
                                             @foreach (AcaoControleDB permissao in permissoes.Where(w => w.ControleDBId == controle.Id))
                                             {
@@ -212,7 +246,6 @@
                                                 </div>
                                             }
                                         </div>
-
                                     </div>
                                 }
 
@@ -220,23 +253,63 @@
                         </div>
 
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                    </div>
                 </div>
 
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="modalPermissoesDeGrupoMembro" tabindex="-1" role="dialog" aria-labelledby="permissoesDeUsuarioLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content" style="min-height:300px;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="permissoesDeUsuarioLabel"> Membros do Grupo</h5>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="col-12">
+
+
+                            <input type="text" class="form-control" />
+                            <input type="button" class="form-control btn btn-danger" style="margin-top:3px; margin-bottom:10px" value="Incluir" />
+
+                        </div>
+                        <div class="col-12">
+
+                            @foreach (UsuarioDB item in usuarios)
+
+                            {
+
+
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" id="prm-@item.Id">
+                                    <label class="form-check-label" for="prm-@item.Id">
+                                        @item.Nome
+                                    </label>
+                                </div>
+
+
+                            }
+
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Salvar alterações</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-@*<div id="menu2" class="tab-pane fade">
-        <h3>Menu 2</h3>
-        <p>Some content in menu 2.</p>
-    </div>*@
-</div>
+
 
 @section Scripts {
     <!-- 2. GOOGLE JQUERY JS v3.2.1  JS !-->
@@ -246,14 +319,20 @@
 }
 
 <script>
-    function buttonNameGrupo() {
-        let selectedGrupo = document.querySelector(".dropdown-item.active.show.grupo").textContent;
-        document.querySelector("#dropdownGrupo").innerHTML = selectedGrupo;
+    function getSelectedPermissionGroup() {
+        $(".grupo-tab-pane").removeClass("active");
+        var selectedPermissionGroup = document.getElementById("permissionGroup").value;
+        console.log(selectedPermissionGroup);
+        var newGroupClass = ['#grp-', selectedPermissionGroup].join('');
+        $(newGroupClass).addClass("active")
     }
 
-    function buttonNameUsuario() {
-        let selectedUsuario = document.querySelector(".dropdown-item.active.show.usuario").textContent;
-        document.querySelector("#dropdownUsuario").innerHTML = selectedUsuario;
+    function getSelectedPermissionUser() {
+        $(".usuario-tab-pane").removeClass("active");
+        var selectedPermissionUser = document.getElementById("permissionUser").value;
+        console.log(selectedPermissionUser);
+        var newUserClass = ['#usr-', selectedPermissionUser].join('');
+        $(newUserClass).addClass("active")
     }
 
 
