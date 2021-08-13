@@ -8,8 +8,6 @@
     List<AcaoControleDB> permissoes = (List<AcaoControleDB>)ViewBag.Permissoes;
     List<PerfilDB> perfis = (List<PerfilDB>)ViewBag.Perfis;
 
-    var selected = "";
-
 
 }
 
@@ -48,6 +46,7 @@
                         <th>
                             Ações
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -322,7 +321,6 @@
     function getSelectedPermissionGroup() {
         $(".grupo-tab-pane").removeClass("active");
         var selectedPermissionGroup = document.getElementById("permissionGroup").value;
-        console.log(selectedPermissionGroup);
         var newGroupClass = ['#grp-', selectedPermissionGroup].join('');
         $(newGroupClass).addClass("active")
     }
@@ -330,7 +328,6 @@
     function getSelectedPermissionUser() {
         $(".usuario-tab-pane").removeClass("active");
         var selectedPermissionUser = document.getElementById("permissionUser").value;
-        console.log(selectedPermissionUser);
         var newUserClass = ['#usr-', selectedPermissionUser].join('');
         $(newUserClass).addClass("active")
     }

@@ -15061,7 +15061,7 @@ body[data-layout-mode=boxed][data-layout=topnav] .navbar-custom {
         margin-top: -4px
     }
 
-.rightbar-overlay {
+/*.rightbar-overlay {
     background-color: #37404a;
     opacity: .1;
     position: absolute;
@@ -15073,7 +15073,7 @@ body[data-layout-mode=boxed][data-layout=topnav] .navbar-custom {
     z-index: 9998;
     -webkit-transition: all .2s ease-out;
     transition: all .2s ease-out
-}
+}*/
 
 .end-bar-enabled .end-bar {
     right: 0
