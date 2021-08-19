@@ -32,7 +32,7 @@ namespace PORTAL_DE_TI.Models
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
 
-        public List<PerfilUsuarioDB> PerfilAcaoDBList { get; set; }
+        public List<PerfilUsuarioDB> PerfilUsuarioDBList { get; set; }
 
     }
 }

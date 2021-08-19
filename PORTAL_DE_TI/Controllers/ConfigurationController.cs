@@ -19,5 +19,7 @@ namespace PORTAL_DE_TI.Controllers
             ViewBag.Permissoes = this.AcaoControle.FindAll();
             return View();
         }
+
+       
     }
 }

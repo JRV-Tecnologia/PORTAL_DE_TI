@@ -17,5 +17,7 @@ namespace PORTAL_DE_TI.Models
         public String DsPerfil { get; set; }
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
+
+        public List<PerfilUsuarioDB> PerfilUsuarioDBList { get; set; }
     }
 }

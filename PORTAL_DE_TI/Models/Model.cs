@@ -32,6 +32,7 @@ namespace PORTAL_DE_TI.Models
         public DbSet<NewsDB> NewsDBs { get; set; }
         public DbSet<PerfilDB> PerfilDBs { get; set; }
         public DbSet<PerfilAcaoDB> PerfilAcaoDBs { get; set; }
+        public DbSet<UsuarioAcaoDB> UsuarioAcaoDBs { get; set; }
         public DbSet<PerfilUsuarioDB> PerfilUsuarioDBs { get; set; }
         public DbSet<ProcessosDB> ProcessoDBs { get; set; }
         public DbSet<TipoAcaoDB> TipoAcaoDBs { get; set; }

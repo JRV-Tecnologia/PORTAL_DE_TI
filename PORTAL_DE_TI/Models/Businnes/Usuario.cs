@@ -43,17 +43,28 @@ namespace PORTAL_DE_TI.Models.Businnes
             } 
         }
 
-        //public List<UsuarioDB> FindAll()
-        //{
-        //    //List<UsuarioDB> list = db.UsuarioDBs.ToList();
+        public List<UsuarioDB> FindAll()
+        {
+            List<UsuarioDB> list = db.UsuarioDBs.ToList();
 
-        //    //foreach(UsuarioDB usuario in list)
-        //    //{
-        //    //    usuario.PerfilAcaoDBList = db.PerfilAcaoDBs.Where(w => w.)
-        //    //}
+            foreach (UsuarioDB usuario in list)
+            {
+                usuario.PerfilUsuarioDBList = db.PerfilUsuarioDBs.Where(w => w.UsuarioDBId == usuario.Id).ToList();
+            }
 
-        //    //return list;
-        //}
+            return list;
+        }
+        public List<UsuarioDB> FindAll(string filter)
+        {
+            List<UsuarioDB> list = db.UsuarioDBs.Where(w => w.NomeCompleto.Contains(filter)).ToList();
+
+            foreach (UsuarioDB usuario in list)
+            {
+                usuario.PerfilUsuarioDBList = db.PerfilUsuarioDBs.Where(w => w.UsuarioDBId == usuario.Id).ToList();
+            }
+
+            return list;
+        }
 
 
     }

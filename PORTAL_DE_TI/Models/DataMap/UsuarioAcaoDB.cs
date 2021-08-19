@@ -9,17 +9,16 @@ using System.Threading.Tasks;
 namespace PORTAL_DE_TI.Models
 
 {
-    [Table("TB_PERFIL_ACAO")]
-    public class PerfilAcaoDB
+    [Table("TB_USUARIO_ACAO")]
+    public class UsuarioAcaoDB
     {
         //properties
         [Key]
-        [Column("ID_PERFIL_ACAO")]
+        [Column("ID_USUARIO_ACAO")]
         public Int32 IdPerfilAcao { get; set; }        
                 
         [Column("REMOVED")]
         public Boolean Removed { get; set; }
-
 
         //foreingkey
         [Column("ID_MENU")]
@@ -31,10 +30,10 @@ namespace PORTAL_DE_TI.Models
         public Int32 AcaoDBId { get; set; }
         public AcaoDB AcaoDB { get; set; }
 
-        [Column("ID_PERFIL")]
+        [Column("ID_USUARIO")]
         //public Int32 AcaoDBAcaoId { get; set; }
-        public Int32 PerfilDBId { get; set; }
-        public PerfilDB PerfilDB { get; set; }
+        public Int32 UsuarioDBId { get; set; }
+        public UsuarioDB UsuarioDB { get; set; }
 
     }
 }

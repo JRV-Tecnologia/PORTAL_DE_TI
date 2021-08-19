@@ -45,7 +45,7 @@ namespace PORTAL_DE_TI
                 o.ForwardClientCertificate = false;
             });
 
-           
+            services.AddCors();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddHttpContextAccessor();
             services.AddTransient<IUserResolverService, UserResolverService>();
@@ -100,6 +100,14 @@ namespace PORTAL_DE_TI
                      "NewsList",
                      "news",
                      new { controller = "news", action = "Index" });
+                routes.MapRoute(
+                     "NewsCreate",
+                     "news/create",
+                     new { controller = "news", action = "Create" });
+                routes.MapRoute(
+                     "NewsEdit",
+                     "news/edit/{id}",
+                     new { controller = "news", action = "Edit", id = "" });
                 routes.MapRoute(
                      "NewsDetail",
                      "news/{id}",

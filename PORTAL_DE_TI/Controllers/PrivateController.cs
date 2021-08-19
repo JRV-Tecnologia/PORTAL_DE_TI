@@ -26,14 +26,20 @@ namespace PORTAL_DE_TI.Controllers
          }
 
         public PerfilAcao PerfilAcao { get; set; }
+        public PerfilUsuario PerfilUsuario { get; set; }
+        public UsuarioAcao UsuarioAcao { get; set; }
         public Usuario Usuario { get; set; }
         public AcaoControle AcaoControle { get; set; }
+        public Controle Controle { get; set; }
 
         public PrivateController()
         {
+            UsuarioAcao = new UsuarioAcao(db);
+            PerfilUsuario = new PerfilUsuario(db);
             PerfilAcao = new PerfilAcao(db);
             Usuario = new Usuario(db);
             AcaoControle = new AcaoControle(db);
+            Controle = new Controle(db);
 
         }
 

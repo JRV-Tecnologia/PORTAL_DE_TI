@@ -16,5 +16,8 @@ namespace PORTAL_DE_TI.Models
         public Int32 Id { get; set; }
         [Column("DS_CONTROLLER")]
         public String DsController { get; set; }
+
+        public List<AcaoControleDB> AcaoControleList { get; set; }
+        public MenuDB MenuDB { get; set; }
     }
 }

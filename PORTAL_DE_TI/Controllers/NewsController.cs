@@ -23,5 +23,10 @@ namespace PORTAL_DE_TI.Controllers
             return View("Detalhes", news);
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
     }
 }
