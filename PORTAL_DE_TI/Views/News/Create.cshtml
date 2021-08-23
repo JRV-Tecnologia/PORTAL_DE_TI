@@ -14,20 +14,47 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
 
 <h1>
     News - Create
 </h1>
-<div id="summernote"></div>
-<div style="display:flex; justify-content:flex-end; ">
-    <button type="button" id="createNews_Cancel" class="btn btn-secondary" style="margin-right:1rem">Cancelar</button>
-    <button type="button" id="createNews_Save" class="btn btn-primary">Salvar</button>
+<div>
+    <form method="post" action="/news/create" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="tituloInput" class="form-label">Título</label>
+            <input type="text" name="Nome" class="form-control" id="tituloInput" placeholder="Título" >
+        </div>
+        <div class="mb-3">
+            @*Texto*@
+            <label for="resenhaInput" class="form-label">Resenha</label>
+            <textarea class="summernote" id="resenhaInput" name="Resenha"></textarea>
+        </div>
+        <div class="mb-3">
+            @*Imagem*@
+            <label for="imageInpunt" class="form-label">Imagem</label>
+            <input class="form-control" name="CaminhoImg" type="file" id="imageInpunt" accept="image/*">
+        </div>
+        <div class="mb-3">
+            @*Texto*@
+            <label for="textoInpunt" class="form-label">Texto</label>
+            <textarea class="summernote" id="Texto" name="Texto"></textarea>
+            <div style=" justify-content:flex-end; ">
+                <button type="button" id="createNews_Cancel" class="btn btn-secondary" style="margin-right:1rem">Cancelar</button>
+                <button type="submit" id="createNews_Save" class="btn btn-primary">Salvar</button>
+            </div>
+        </div>
+    </form>
 </div>
+
 <script>
-    $('#summernote').summernote({
-        placeholder: 'Insira os dados da notícia aqui',
-        tabsize: 2,
-        height: 300
+    $(document).ready(function () {
+        $('.summernote').summernote();
     });
 </script>
+<script src="lang/summernote-pt-BR.js"></script>
+
+@section Scripts {
+    <script src="~/js/Views/News/Create.js"></script>
+
+}

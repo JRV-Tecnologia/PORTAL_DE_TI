@@ -223,7 +223,7 @@
                     <div class="modal-body row">
                         <div class="col-12">
                             <select class="form-select form-select mb-3" id="permissionGroup" aria-label=".form-select-lg example">
-                                <option selected disabled>Selecione um módulo</option>
+                                <option value="0">Selecione um módulo</option>
                                 @foreach (ControleDB item in controles)
                                 {
                                     <option value="@item.DsController" href="#grp-@item.DsController">@item.DsController</option>

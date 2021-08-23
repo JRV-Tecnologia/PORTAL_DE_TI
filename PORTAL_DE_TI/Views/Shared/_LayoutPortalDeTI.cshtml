@@ -138,18 +138,26 @@
                 <div class="navbar-custom" style="padding:0 0; margin:0 0">
                     <div id="authentication">
                         <ul class="list-unstyled topbar-menu float-end mb-0" style="margin-top: -10px;">
-                            <button   style="border: none; color: #313a46; height: 70px; line-height: 70px; width: 60px; background-color: transparent; font-size: 24px; cursor: pointer; float: left; z-index: 1; position: relative; margin-left: -24px;">
+                            <button class="dropdown-toggle" style="border: none; color: #313a46; height: 70px; line-height: 70px; width: 60px; background-color: transparent; font-size: 24px; cursor: pointer; float: left; z-index: 1; position: relative; margin-left: -24px;">
+                                <i class="fas fa-edit" style="color:white"></i>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Banner</a></li>
+                                <li><a class="dropdown-item" href="#">Banner 4</a></li>
+                                <li><a class="dropdown-item" href="#">News and Memos</a></li>
+                                <li><a class="dropdown-item" href="#">Processos</a></li>
+                            </ul>
+                            <button style="border: none; color: #313a46; height: 70px; line-height: 70px; width: 60px; background-color: transparent; font-size: 24px; cursor: pointer; float: left; z-index: 1; position: relative; margin-left: -24px;">
                                 <a href="/configuration">
                                     <i class="fas fa-cog" style="color:white"></i>
                                 </a>
-                                
                             </button>
                             <li class="dropdown notification-list">
                                 <a class="nav-link dropdown-toggle nav-user arrow-none me-0" data-bs-toggle="dropdown" role="button" aria-haspopup="false" aria-expanded="false" style="display:flex;background: transparent !important">
                                     <span>
                                         <span class="account-user-name">@usuario.Nome</span>
                                     </span>
-                                    <span class="account-user-avatar" >
+                                    <span class="account-user-avatar">
                                         <img src="images/avatar-1.png" alt="user-image" class="rounded-circle">
                                     </span>
 
@@ -157,34 +165,34 @@
                                 <!--<div class="dropdown-menu dropdown-menu-end dropdown-menu-animated topbar-dropdown-menu profile-dropdown" style="">-->
                                 <!-- item-->
                                 <!--<div class=" dropdown-header noti-title">
-                                    <h6 class="text-overflow m-0">Welcome !</h6>
-                                </div>-->
+            <h6 class="text-overflow m-0">Welcome !</h6>
+        </div>-->
                                 <!-- item-->
                                 <!--<a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-account-circle me-1"></i>
-                                    <span>My Account</span>
-                                </a>-->
+            <i class="mdi mdi-account-circle me-1"></i>
+            <span>My Account</span>
+        </a>-->
                                 <!-- item-->
                                 <!--<a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-account-edit me-1"></i>
-                                    <span>Settings</span>
-                                </a>-->
+            <i class="mdi mdi-account-edit me-1"></i>
+            <span>Settings</span>
+        </a>-->
                                 <!-- item-->
                                 <!--<a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-lifebuoy me-1"></i>
-                                    <span>Support</span>
-                                </a>-->
+            <i class="mdi mdi-lifebuoy me-1"></i>
+            <span>Support</span>
+        </a>-->
                                 <!-- item-->
                                 <!--<a href="javascript:void(0);" class="dropdown-item notify-item">
-                                    <i class="mdi mdi-lock-outline me-1"></i>
-                                    <span>Lock Screen</span>
-                                </a>-->
+            <i class="mdi mdi-lock-outline me-1"></i>
+            <span>Lock Screen</span>
+        </a>-->
                                 <!-- item-->
                                 <!--<a href="javascript:void(0);" class="dropdown-item notify-item">
-                                        <i class="mdi mdi-logout me-1"></i>
-                                        <span>Logout</span>
-                                    </a>
-                                </div>-->
+                <i class="mdi mdi-logout me-1"></i>
+                <span>Logout</span>
+            </a>
+        </div>-->
                             </li>
                         </ul>
                         <button class="button-menu-mobile open-left" style="padding-left:40px; margin-top: -10px;">

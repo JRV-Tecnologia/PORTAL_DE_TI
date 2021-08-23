@@ -102,8 +102,8 @@ namespace PORTAL_DE_TI
                      new { controller = "news", action = "Index" });
                 routes.MapRoute(
                      "NewsCreate",
-                     "news/create",
-                     new { controller = "news", action = "Create" });
+                     "news/create/{id}",
+                     new { controller = "news", action = "Create", id ="" });
                 routes.MapRoute(
                      "NewsEdit",
                      "news/edit/{id}",

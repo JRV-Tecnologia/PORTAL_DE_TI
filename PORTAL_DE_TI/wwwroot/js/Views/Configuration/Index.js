@@ -115,6 +115,7 @@
         let group = $(this).attr("data-item");
         let groupname = $(this).attr("data-name");
         $('body').addClass('busy');
+        $("#modalPermissoesDeGrupoMembro_Incluir").addClass("disabled");
         $("#configurationSpinnerGroup").show();
 
         $("#modalPermissoesDeGrupoMembro").attr("data-item", group);
@@ -166,12 +167,22 @@
 
                                 $(".dropdown-menu a").on("click", function () {
                                     var name = $(this).text();
-
+                                    var id = userData.filter(f => f.text === name)[0].value;
                                     
                                     $("#modalPermissoesDeGrupoMembro_includeUserId").val(userData.filter(f => f.text === name)[0].value);
 
                                     $(".dropdown-menu").toggle();
+                                    var memberExists = false
+                                    $(".modal-permissoes-de-grupo-member-input").each(function () {
+                                        if (parseInt($(this).val()) === id) {
+                                            memberExists = true
+                                        }
+                                    })
+                                    if (memberExists === false) {
+                                        $("#modalPermissoesDeGrupoMembro_Incluir").removeClass("disabled");
+                                    }                                    
                                 });
+
                             });
                         }
                     }
@@ -203,9 +214,11 @@
 
     $("#modalPermissoesDeGrupoMembro_Incluir").on('click', function () {
 
+        $("#modalPermissoesDeGrupoMembro_Incluir").addClass("disabled");
         var id = $("#modalPermissoesDeGrupoMembro_includeUserId").val();
         var name = $("#modalPermissoesDeGrupoMembro_includeUserName").val();
-
+        
+             
 
         var newRow = $(`<tr>`);
         var cols = "";

@@ -14,9 +14,19 @@
     </div>
 </div>
 <hr>
-<h1>
-    News
-</h1>
+
+<div style="display:inline-flex">
+    <h1>
+        News
+    </h1>
+    <h3>
+        <a style="margin-left:75rem;" href="/news/create">
+            <i style="color:#4d6184;" class="fas fa-plus"></i>
+        </a>
+    </h3>
+
+</div>
+
 <div class="col-12" style="text-align:center">
     <table class="table data-tables">
         <thead>
@@ -29,6 +39,9 @@
                 </th>
                 <th>
                     Data
+                </th>
+                <th>
+                    Ações
                 </th>
             </tr>
         </thead>
@@ -47,7 +60,20 @@
                             @item.Resenha
                         </a>
                     </td>
+
                     <td>@item.DataCadastro.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        <h4>
+                            <a href="/news/edit/@item.Id">
+                                <i style="color:#4d6184;" class="far fa-edit"></i>
+                            </a>
+                            |
+                            <a href="/news/delete/@item.Id">
+                                <i style="color:#4d6184;" class="fas fa-trash"></i>
+                            </a>
+                        </h4>
+                        
+                    </td>
                 </tr>
             }
         </tbody>

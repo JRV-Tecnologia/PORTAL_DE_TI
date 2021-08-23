@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.Extensions.FileProviders;
 using PORTAL_DE_TI.Models;
 using PORTAL_DE_TI.Models.Businnes;
 
 namespace PORTAL_DE_TI.Controllers
 {
-    public class PrivateController : Controller
+    public class PrivateController : Controller 
     {
         private const string PUBLIC_REDIRECT = "/Authentication/Login";
         private const string PRIVATE_REDIRECT = "/";
@@ -31,15 +34,18 @@ namespace PORTAL_DE_TI.Controllers
         public Usuario Usuario { get; set; }
         public AcaoControle AcaoControle { get; set; }
         public Controle Controle { get; set; }
+        public News News { get; set; }
 
         public PrivateController()
         {
+
             UsuarioAcao = new UsuarioAcao(db);
             PerfilUsuario = new PerfilUsuario(db);
             PerfilAcao = new PerfilAcao(db);
             Usuario = new Usuario(db);
             AcaoControle = new AcaoControle(db);
             Controle = new Controle(db);
+            News = new News(db);
 
         }
 
@@ -89,6 +95,11 @@ namespace PORTAL_DE_TI.Controllers
             ViewData["Menu"] = db.MenuDBs.ToList();
         }
 
+
+        public string MapPath(string path)
+        {
+            return $"{Environment.CurrentDirectory}{path.Replace("/", "\\")}\\";
+        }
 
 
     }
